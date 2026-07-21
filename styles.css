@@ -852,9 +852,14 @@ h1, h2, h3 { font-weight: 700; line-height: 1.2; }
 
 /* --- Print & PDF Export Styles --- */
 @media print {
+  @page {
+    size: A4 landscape;
+    margin: 8mm;
+  }
   body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    background-color: #111215 !important;
   }
   .scroll-fade,
   .scroll-slide-left,
@@ -863,8 +868,31 @@ h1, h2, h3 { font-weight: 700; line-height: 1.2; }
     transform: none !important;
     transition: none !important;
   }
-  .logistics-anim {
+  .logistics-anim,
+  .scroll-to-top {
     display: none !important;
+  }
+  section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 25px !important;
+  }
+  .card,
+  .review-card,
+  .docusign-hero-card,
+  .scenario-card,
+  .roadmap-card,
+  .faq-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .faq-answer,
+  .internal-faq-answer {
+    display: block !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-top: 10px !important;
   }
 }
 
