@@ -854,12 +854,13 @@ h1, h2, h3 { font-weight: 700; line-height: 1.2; }
 @media print {
   @page {
     size: A4 landscape;
-    margin: 8mm;
+    margin: 0;
   }
-  body {
+  html, body {
+    background-color: #111215 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    background-color: #111215 !important;
+    width: 100% !important;
   }
   .scroll-fade,
   .scroll-slide-left,
@@ -873,9 +874,17 @@ h1, h2, h3 { font-weight: 700; line-height: 1.2; }
     display: none !important;
   }
   section {
+    break-before: page !important;
+    page-break-before: always !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
-    margin-bottom: 25px !important;
+    padding: 40px 30px !important;
+    min-height: 100vh !important;
+    box-sizing: border-box !important;
+  }
+  section.hero-section {
+    break-before: auto !important;
+    page-break-before: auto !important;
   }
   .card,
   .review-card,
