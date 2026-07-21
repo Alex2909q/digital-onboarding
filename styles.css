@@ -850,6 +850,24 @@ h1, h2, h3 { font-weight: 700; line-height: 1.2; }
   }
 }
 
+/* --- Print & PDF Export Styles --- */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .scroll-fade,
+  .scroll-slide-left,
+  .scroll-slide-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .logistics-anim {
+    display: none !important;
+  }
+}
+
 /* --- Roadmap Section (MVP vs Target Solution) --- */
 .roadmap-section {
   background-color: var(--bg-graphite-dark);
