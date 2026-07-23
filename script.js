@@ -67,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             days: { from: 0, to: 7, suffix: '', unit: 'днів', prefix: 'до ' },
             emails: { from: 0, to: 5, suffix: '', unit: 'листів', prefix: '3–' },
             manager: { from: 0, to: 1, suffix: '', unit: 'менеджер', prefix: '' },
-            ghost: { from: 0, to: 0, suffix: '', unit: '', prefix: '???' }
+            ghost: { from: 0, to: 0, suffix: '', unit: '', prefix: '???' },
+            complaints: { from: 0, to: 1, suffix: '', unit: '', prefix: 'ТОП ' }
         };
 
         const config = configs[type];
