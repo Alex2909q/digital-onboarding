@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Post — B2B Digital Onboarding Flow</title>
+    <meta name="description" content="Step-by-step interactive B2B client onboarding presentation for Nova Post user interviews.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .flow-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .flow-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #EE1D23;
+            text-decoration: none;
+        }
+
+        .flow-logo img {
+            height: 28px;
+        }
+
+        .back-link {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-link:hover {
+            color: #ffffff;
+        }
+
+        .flow-hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .flow-badge {
+            display: inline-block;
+            background: rgba(238, 29, 35, 0.15);
+            color: #EE1D23;
+            border: 1px solid rgba(238, 29, 35, 0.3);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .flow-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(180deg, #ffffff 0%, #cccccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .flow-hero p {
+            font-size: 1.15rem;
+            color: #aaaaaa;
+            line-height: 1.6;
+        }
+
+        .flow-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 80px;
+        }
+
+        .flow-step-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .flow-step-card:hover {
+            border-color: rgba(238, 29, 35, 0.4);
+        }
+
+        .flow-step-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .flow-step-number {
+            background: #EE1D23;
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 1.4rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .flow-step-info h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .flow-step-info p {
+            color: #cccccc;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .flow-img-wrapper {
+            width: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #1a1a1a;
+        }
+
+        .flow-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+        }
+
+        .flow-grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .flow-grid-2x2 {
+                grid-template-columns: 1fr;
+            }
+            .flow-hero h1 { font-size: 2rem; }
+            .flow-step-card { padding: 24px; }
+        }
+
+        .phase4-split {
+            display: flex;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .phase4-left {
+            flex: 1;
+        }
+
+        .phase4-right {
+            flex: 1.2;
+            background: #ffffff;
+            color: #333333;
+            border-radius: 14px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            text-align: left;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 900px) {
+            .phase4-split { flex-direction: column; }
+        }
+
+        .email-header {
+            background: #f8f9fa;
+            padding: 18px 24px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .email-header strong { color: #111; }
+        .email-body {
+            padding: 24px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            cursor: zoom-out;
+        }
+        .lightbox-modal img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .flow-footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="flow-nav">
+        <a href="index.html" class="flow-logo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#EE1D23"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            <span>NOVA POST · B2B FLOW</span>
+        </a>
+        <a href="index.html" class="back-link">
+            ← Full Presentation
+        </a>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="flow-hero">
+        <div class="flow-badge">User Interview Presentation</div>
+        <h1>Digital B2B Onboarding Journey</h1>
+        <p>Step-by-step visual demonstration of the automated B2B customer onboarding flow via DocuSign</p>
+    </header>
+
+    <!-- Flow Container -->
+    <main class="flow-container">
+
+        <!-- PHASE 1 -->
+        <article class="flow-step-card">
+            <div class="flow-step-header">
+                <div class="flow-step-number">1</div>
+                <div class="flow-step-info">
+                    <h2>Phase 1 · Website Instruction & Registration</h2>
+                    <p>Client visits Nova Post website ("For Business" → "How to become a client"). Learns the process, clicks "BECOME A BUSINESS CLIENT", and registers via OTP. <strong>Solves TOP-1 pain point:</strong> zero waiting for a sales manager response.</p>
+                </div>
+            </div>
+            <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="screen_instruction_real.png" alt="Phase 1: Website Instruction - How to become a client">
+            </div>
+        </article>
+
+        <!-- PHASE 2 -->
+        <article class="flow-step-card">
+            <div class="flow-step-header">
+                <div class="flow-step-number">2</div>
+                <div class="flow-step-info">
+                    <h2>Phase 2 · One-Click Signing Initiation</h2>
+                    <p>Inside the <strong>My Nova Post</strong> cabinet, the user clicks the prominent red button <strong>«SIGN CONTRACT»</strong> in the top bar to instantly initiate agreement signing.</p>
+                </div>
+            </div>
+            <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="screen_cabinet.png" alt="Phase 2: My Nova Post cabinet header with SIGN CONTRACT button">
+            </div>
+        </article>
+
+        <!-- PHASE 3 -->
+        <article class="flow-step-card">
+            <div class="flow-step-header">
+                <div class="flow-step-number">3</div>
+                <div class="flow-step-info">
+                    <h2>Phase 3 · Online Contract Signing via DocuSign</h2>
+                    <p>DocuSign PowerForm opens. The client fills minimum company details (Company ID, Name, Address) and electronically signs the legal agreement online in under 2 minutes.</p>
+                </div>
+            </div>
+            <div class="flow-grid-2x2">
+                <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="screen_docusign_start.png" alt="DocuSign Step 1: PowerForm Start Screen">
+                </div>
+                <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="screen_docusign_form.png" alt="DocuSign Step 2: Company Details Entry Form">
+                </div>
+                <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="screen_docusign_agreement_1.png" alt="DocuSign Step 3: Contract Document Review">
+                </div>
+                <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="screen_docusign_agreement_2.png" alt="DocuSign Step 4: Electronic Signature Placement">
+                </div>
+            </div>
+        </article>
+
+        <!-- PHASE 4 -->
+        <article class="flow-step-card">
+            <div class="flow-step-header">
+                <div class="flow-step-number">4</div>
+                <div class="flow-step-info">
+                    <h2>Phase 4 · Thank You Screen & Automated Activation Email</h2>
+                    <p>Immediately after signing, the client sees the Thank You page. Within 2 hours, data is auto-synced to CRM, and an official activation email is sent with cabinet credentials and personal manager contacts.</p>
+                </div>
+            </div>
+            <div class="phase4-split">
+                <!-- Thank You Screen -->
+                <div class="phase4-left">
+                    <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="screen_docusign_thankyou.png" alt="DocuSign Thank You Confirmation Screen">
+                    </div>
+                </div>
+                <!-- Email Mockup -->
+                <div class="phase4-right">
+                    <div class="email-header">
+                        <div><strong>From:</strong> B2B Support Nova Post &lt;b2b@novapost.cz&gt;</div>
+                        <div style="margin-top: 4px;"><strong>To:</strong> client-company@gmail.com</div>
+                        <div style="font-weight: 700; color: #111; margin-top: 10px; font-size: 0.95rem;">Subject: Welcome to Nova Post! Your business account is successfully activated 🚀</div>
+                    </div>
+                    <div class="email-body">
+                        <p style="margin-top: 0; margin-bottom: 14px;">Dear Client,</p>
+                        <p style="margin-bottom: 14px;">Thank you for choosing Nova Post as your logistics partner. We are pleased to inform you that your contract has been successfully signed, and your business account in <strong>My Nova Post</strong> has been activated.</p>
+                        <p style="margin-bottom: 10px; font-weight: 700; color: #111;">Access B2B client benefits:</p>
+                        <ul style="margin-bottom: 16px; padding-left: 20px;">
+                            <li style="margin-bottom: 6px;"><strong>Fast creation:</strong> create international & domestic shipments instantly.</li>
+                            <li style="margin-bottom: 6px;"><strong>Registers & Labels:</strong> group parcels and print shipping labels in bulk.</li>
+                            <li style="margin-bottom: 6px;"><strong>Courier Pickup:</strong> schedule courier pickups directly from your cabinet.</li>
+                        </ul>
+                        <div style="background: rgba(238, 29, 35, 0.05); border-left: 3px solid #EE1D23; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px;">
+                            <div style="font-weight: 700; color: #EE1D23; margin-bottom: 4px;">🔑 Cabinet Link:</div>
+                            <div style="font-size: 0.88rem; color: #444;">
+                                • Link: <a href="https://my.novapost.cz/" target="_blank" style="color: #0066cc;">my.novapost.cz</a><br>
+                                • Login: your registered email or phone
+                            </div>
+                        </div>
+                        <div style="background: #f1f3f5; padding: 12px 16px; border-radius: 8px;">
+                            <div style="font-weight: 700; color: #111; margin-bottom: 4px;">👤 Assigned Personal Manager:</div>
+                            <div style="font-size: 0.88rem; color: #444;">
+                                Oleksandr Kovalchuk | +420 770 000 000 | o.kovalchuk@novapost.cz
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Zoomed view">
+    </div>
+
+    <!-- Footer -->
+    <footer class="flow-footer">
+        <p>© 2026 Nova Post. B2B Digital Onboarding Presentation for User Interviews.</p>
+    </footer>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
