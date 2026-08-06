@@ -1,739 +1,400 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Нова пошта: Цифровий онбординг B2B</title>
+    <title>Nova Post — B2B Digital Onboarding Flow</title>
+    <meta name="description" content="Step-by-step interactive B2B client onboarding presentation for Nova Post user interviews.">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .flow-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .flow-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #EE1D23;
+            text-decoration: none;
+        }
+
+        .flow-logo img {
+            height: 28px;
+        }
+
+        .back-link {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-link:hover {
+            color: #ffffff;
+        }
+
+        .flow-hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .flow-badge {
+            display: inline-block;
+            background: rgba(238, 29, 35, 0.15);
+            color: #EE1D23;
+            border: 1px solid rgba(238, 29, 35, 0.3);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .flow-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(180deg, #ffffff 0%, #cccccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .flow-hero p {
+            font-size: 1.15rem;
+            color: #aaaaaa;
+            line-height: 1.6;
+        }
+
+        .flow-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 80px;
+        }
+
+        .flow-step-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .flow-step-card:hover {
+            border-color: rgba(238, 29, 35, 0.4);
+        }
+
+        .flow-step-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .flow-step-number {
+            background: #EE1D23;
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 1.4rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .flow-step-info h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .flow-step-info p {
+            color: #cccccc;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .flow-img-wrapper {
+            width: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #1a1a1a;
+        }
+
+        .flow-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+        }
+
+        .flow-grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .flow-grid-2x2 {
+                grid-template-columns: 1fr;
+            }
+            .flow-hero h1 { font-size: 2rem; }
+            .flow-step-card { padding: 24px; }
+        }
+
+        .phase4-split {
+            display: flex;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .phase4-left {
+            flex: 1;
+        }
+
+        .phase4-right {
+            flex: 1.2;
+            background: #ffffff;
+            color: #333333;
+            border-radius: 14px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            text-align: left;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 900px) {
+            .phase4-split { flex-direction: column; }
+        }
+
+        .email-header {
+            background: #f8f9fa;
+            padding: 18px 24px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .email-header strong { color: #111; }
+        .email-body {
+            padding: 24px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            cursor: zoom-out;
+        }
+        .lightbox-modal img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .flow-footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- БЛОК 1: HERO (Перший екран) -->
-    <section class="hero-section">
-        <!-- Анімації логістики (Hero) -->
-        <div class="logistics-anim icon-pin"><svg viewBox="0 0 24 24" width="60" height="60"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-        <div class="logistics-anim icon-plane-hero"><svg viewBox="0 0 24 24" width="90" height="90"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>
+    <!-- Header Navigation -->
+    <nav class="flow-nav">
+        <a href="index.html" class="flow-logo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#EE1D23"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            <span>NOVA POST · B2B FLOW</span>
+        </a>
+        <a href="index.html" class="back-link">
+            ← Full Presentation
+        </a>
+    </nav>
 
-        <div class="container hero-content">
-            <div class="badge fade-up anim-delay-1">Чехія | Проєкт онбордингу</div>
-            <h1 class="fade-up anim-delay-2">Договір до <span class="highlight-white">2 годин</span> замість тижня. <span class="highlight">Нова пошта запускає цифровий онбординг B2B.</span></h1>
-            <p class="subtitle fade-up anim-delay-3">Ми замінили дзвінки, листування та паперовий підпис на єдиний цифровий флоу: реєстрація, DocuSign та активація без жодного візиту.</p>
-            
-            <div class="badge fade-up anim-delay-3" style="background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.15); margin-top: -10px; margin-bottom: 30px;">
-                🚀 MVP: Чехія (1 місяць) з подальшим масштабуванням на всі країни після успіху
-            </div>
+    <!-- Hero Header -->
+    <header class="flow-hero">
+        <div class="flow-badge">User Interview Presentation</div>
+        <h1>Digital B2B Onboarding Journey</h1>
+        <p>Step-by-step visual demonstration of the automated B2B customer onboarding flow via DocuSign</p>
+    </header>
 
-            <div class="cta-wrapper fade-up anim-delay-4">
-                <button class="btn-primary pulse" data-scroll-to=".testimonials-section">🚀 ДІЗНАТИСЬ БІЛЬШЕ</button>
-            </div>
-        </div>
-    </section>
+    <!-- Flow Container -->
+    <main class="flow-container">
 
-    <!-- БЛОК 2: ВІЗІЯ КОМПАНІЇ -->
-    <section class="testimonials-section">
-        <div class="container" style="max-width: 1440px;">
-            <div class="testimonial-block ceo-block scroll-slide-left">
-                <div class="ceo-image">
-                    <img src="nova-poshta-1.jpg" alt="Володимир Поперешнюк">
+        <!-- PHASE 1 -->
+        <article class="flow-step-card">
+            <div class="flow-step-header">
+                <div class="flow-step-number">1</div>
+                <div class="flow-step-info">
+                    <h2>Phase 1 · Website Instruction & Registration</h2>
+                    <p>Client visits Nova Post website ("For Business" → "How to become a client"). Learns the process, clicks "BECOME A BUSINESS CLIENT", and registers via OTP. <strong>Solves TOP-1 pain point:</strong> zero waiting for a sales manager response.</p>
                 </div>
-                <div class="testimonial-content">
-                    <h3 class="quote-title">«Кожен бізнес-клієнт, якого ми змушуємо чекати тиждень на підписання договору — це вже <span class="highlight">клієнт нашого конкурента</span>.»</h3>
-                    <div class="author-info">
-                        <strong>— Володимир Поперешнюк</strong>
-                        <span>співзасновник компанії «Нова пошта»</span>
+            </div>
+            <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="screen_instruction_real.png" alt="Phase 1: Website Instruction - How to become a client">
+            </div>
+        </article>
+
+        <!-- PHASE 2 -->
+        <article class="flow-step-card">
+            <div class="flow-step-header">
+                <div class="flow-step-number">2</div>
+                <div class="flow-step-info">
+                    <h2>Phase 2 · One-Click Signing Initiation</h2>
+                    <p>Inside the <strong>My Nova Post</strong> cabinet, the user clicks the prominent red button <strong>«SIGN CONTRACT»</strong> in the top bar to instantly initiate agreement signing.</p>
+                </div>
+            </div>
+            <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                <img src="screen_cabinet.png" alt="Phase 2: My Nova Post cabinet header with SIGN CONTRACT button">
+            </div>
+        </article>
+
+        <!-- PHASE 3 -->
+        <article class="flow-step-card">
+            <div class="flow-step-header">
+                <div class="flow-step-number">3</div>
+                <div class="flow-step-info">
+                    <h2>Phase 3 · Online Contract Signing via DocuSign</h2>
+                    <p>DocuSign PowerForm opens. The client fills minimum company details (Company ID, Name, Address) and electronically signs the legal agreement online in under 2 minutes.</p>
+                </div>
+            </div>
+            <div class="flow-grid-2x2">
+                <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="screen_docusign_start.png" alt="DocuSign Step 1: PowerForm Start Screen">
+                </div>
+                <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="screen_docusign_form.png" alt="DocuSign Step 2: Company Details Entry Form">
+                </div>
+                <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="screen_docusign_agreement_1.png" alt="DocuSign Step 3: Contract Document Review">
+                </div>
+                <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="screen_docusign_agreement_2.png" alt="DocuSign Step 4: Electronic Signature Placement">
+                </div>
+            </div>
+        </article>
+
+        <!-- PHASE 4 -->
+        <article class="flow-step-card">
+            <div class="flow-step-header">
+                <div class="flow-step-number">4</div>
+                <div class="flow-step-info">
+                    <h2>Phase 4 · Thank You Screen & Automated Activation Email</h2>
+                    <p>Immediately after signing, the client sees the Thank You page. Within 2 hours, data is auto-synced to CRM, and an official activation email is sent with cabinet credentials and personal manager contacts.</p>
+                </div>
+            </div>
+            <div class="phase4-split">
+                <!-- Thank You Screen -->
+                <div class="phase4-left">
+                    <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="screen_docusign_thankyou.png" alt="DocuSign Thank You Confirmation Screen">
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК 3: ПРОБЛЕМА vs РІШЕННЯ -->
-    <section class="comparison-section">
-        <!-- Анімації логістики -->
-        <div class="logistics-anim icon-truck"><svg viewBox="0 0 24 24" width="100" height="100"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
-        <div class="logistics-anim icon-box"><svg viewBox="0 0 24 24" width="80" height="80"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5 12 10.85l5.96-3.35L12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zM19 15.91v-6.7l-6 3.37v6.71l6-3.38z"/></svg></div>
-
-        <div class="container">
-            <h2 class="section-title text-dark" style="margin-bottom: 40px; text-align: center;">Problem Statement</h2>
-            <div class="comparison-grid">
-                <!-- Поточний процес -->
-                <div class="card card-old scroll-fade stagger-1">
-                    <h2 class="card-title">❌ ПРОБЛЕМА (Поточний процес)</h2>
-                    <div class="process-accent">Займає більше 1 тижня</div>
-                    <ul class="feature-list">
-                        <li><strong>ТОП-1 серед скарг в КЦ:</strong> «Менеджер довго не відповідає на лист, не розумію як стати бізнес-клієнтом».</li>
-                        <li><strong>Email/дзвінок:</strong> ручний запуск онбордингу та збір даних.</li>
-                        <li><strong>Листи-уточнення:</strong> 3–5 листів менеджера для збору інформації.</li>
-                        <li><strong>Паперовий підпис:</strong> друк, підпис ручкою, сканування та пересилання.</li>
-                    </ul>
-                </div>
-
-                <!-- Новий цифровий процес -->
-                <div class="card card-new scroll-fade stagger-2" style="display: flex; flex-direction: column;">
-                    <h2 class="card-title">✅ РІШЕННЯ (Цифровий онбординг)</h2>
-                    <div class="process-accent">Займає до 2 годин · 0 скарг</div>
-                    <ul class="feature-list check-list" style="margin-bottom: 25px;">
-                        <li><strong>0 скарг на очікування:</strong> усуваємо затримки відповіді менеджера — повний селф-сервіс на сайті.</li>
-                        <li><strong>Вхід та Кабінет (2 хв):</strong> знайомство з сайтом ("Як стати бізнес-клієнтом") → швидка реєстрація в My Nova Post по OTP.</li>
-                        <li><strong>Договір в один клік (15 хв):</strong> кнопка «Стати бізнес-клієнтом» → миттєве підписання договору через DocuSign online.</li>
-                        <li><strong>Активація (до 2 год):</strong> внесення в CRM менеджером на період MVP.</li>
-                    </ul>
-                    
-                    <!-- Переваги DocuSign -->
-                    <div class="docusign-badge" style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; gap: 15px;">
-                        <div style="flex: 0 0 50px; height: 50px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.06);">
-                            <img src="logo_docusign.svg" alt="DocuSign Logo" style="width: 100%; height: auto; object-fit: contain;">
-                        </div>
-                        <div>
-                            <div style="font-size: 0.95rem; font-weight: 700; color: #111; margin-bottom: 2px;">
-                                DocuSign — Провайдер №1 у світі
-                            </div>
-                            <div style="font-size: 0.85rem; color: #666; line-height: 1.4;">
-                                100% юридичне покриття європейських країн присутності Nova Post та повна відповідність вимогам eIDAS (ЄС).
-                            </div>
-                        </div>
+                <!-- Email Mockup -->
+                <div class="phase4-right">
+                    <div class="email-header">
+                        <div><strong>From:</strong> B2B Support Nova Post &lt;b2b@novapost.cz&gt;</div>
+                        <div style="margin-top: 4px;"><strong>To:</strong> client-company@gmail.com</div>
+                        <div style="font-weight: 700; color: #111; margin-top: 10px; font-size: 0.95rem;">Subject: Welcome to Nova Post! Your business account is successfully activated 🚀</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК 4: БОЛІ ТА МЕТРИКИ -->
-    <section class="testimonials-section">
-        <!-- Анімації логістики (Testimonials) -->
-        <div class="logistics-anim icon-chat"><svg viewBox="0 0 24 24" width="80" height="80"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></div>
-
-        <div class="container">
-            <div class="reviews-header scroll-fade">
-                <h2 style="color: var(--text-dark); margin-bottom: 10px;">Бар'єри на шляху B2B клієнта в ЄС</h2>
-                <p style="font-size: 1.1rem; color: #555; max-width: 1000px; margin: 0 auto 30px auto; font-weight: 500; line-height: 1.5; text-align: center;">
-                    Аналіз перешкод у кабінетах європейського регіону: 
-                    🇵🇱 PL | 🇨🇿 CZ | 🇩🇪 DE | 🇷🇴 RO | 🇸🇰 SK | 🇭🇺 HU 
-                    на основі аналізу звернень сейлс-департаментів та користувачів.
-                </p>
-            </div>
-            
-            <!-- Етапи проблем -->
-            <div class="pain-grid" style="margin-bottom: 40px;">
-                <!-- Етап 1 -->
-                <div class="review-card pain-card scroll-fade stagger-1">
-                    <div class="stars crosses" style="font-size: 1.25rem; margin-bottom: 15px;">❌ 1. Ознайомлення та запити</div>
-                    <div style="font-weight: 700; color: #1a1a1a; margin-bottom: 18px; font-size: 1.15rem; line-height: 1.3;">Брак інструкцій та нерозуміння перших кроків</div>
-                    <p class="review-text" style="margin-bottom: 12px; color: #333;">
-                        • <strong>Суть:</strong> Запити від клієнтів на оформлення контракту, тарифи та умови співпраці.
-                    </p>
-                    <p class="review-text" style="margin-bottom: 6px; color: #333; font-size: 0.95rem;">
-                        • <strong>Лог КЦ:</strong> <em>«Анастасія: хоче лаки 10 кг з Укр в Литву, треба інформування щодо бізнес контракту, вартості послуг і всіх інших нюансів»</em>
-                    </p>
-                    <p class="review-text" style="margin-bottom: 0; color: #333; font-size: 0.95rem;">
-                        • <strong>Лог КЦ:</strong> <em>«Рута: бажають договір скласти та стати бізнес клієнтом. Відправлення косметичних засобів до України»</em>
-                    </p>
-                </div>
-
-                <!-- Етап 2 -->
-                <div class="review-card pain-card scroll-fade stagger-2">
-                    <div class="stars crosses" style="font-size: 1.25rem; margin-bottom: 15px;">❌ 2. Укладання та зв'язок</div>
-                    <div style="font-weight: 700; color: #1a1a1a; margin-bottom: 18px; font-size: 1.15rem; line-height: 1.3;">Вузьке горло: затримки та відсутність зворотного зв'язку</div>
-                    <p class="review-text" style="margin-bottom: 12px; color: #333;">
-                        • <strong>Суть:</strong> Запити на договір або його поновлення зависають у менеджерів без відповіді.
-                    </p>
-                    <p class="review-text" style="margin-bottom: 6px; color: #333; font-size: 0.95rem;">
-                        • <strong>Лог КЦ:</strong> <em>«Вадім / Юля: не може достукатись до відділу бо роб з б-кл»</em>
-                    </p>
-                    <p class="review-text" style="margin-bottom: 0; color: #333; font-size: 0.95rem;">
-                        • <strong>Лог КЦ:</strong> <em>«Рута: запит проігноровано, вона хоче контракт!!!! поновити, бо змінили назву фірми !!»</em>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Загальний імпакт та ресурси -->
-            <div class="reviews-grid" style="margin-bottom: 45px; gap: 20px;">
-                <!-- Імпакт на підтримку -->
-                <div class="review-card pain-card scroll-fade stagger-1" style="border-left-color: var(--text-grey); background: #fafafa;">
-                    <div style="font-size: 1.15rem; font-weight: 700; color: var(--np-red); margin-bottom: 15px;">🚨 Реальні дані звернень у КЦ</div>
-                    <p class="review-text" style="margin-bottom: 0; color: #333;">
-                        Типові звернення з баз: <em>«не може достукатись до відділу бо роб з б-кл»</em>, <em>«запит проігноровано, вона хоче контракт!!!!»</em>, <em>«Клієнт бажає заключити умову з Нова Пост»</em>, <em>«Запитання щодо контакту для фірми»</em>.
-                    </p>
-                </div>
-
-                <!-- Витрати ресурсів менеджерів -->
-                <div class="review-card pain-card scroll-fade stagger-2" style="border-left-color: var(--text-grey); background: #fafafa;">
-                    <div style="font-size: 1.15rem; font-weight: 700; color: var(--np-red); margin-bottom: 15px;">⏳ Витрата ресурсу продажів (Вузьке горло)</div>
-                    <p class="review-text" style="margin-bottom: 0; color: #333;">
-                        Менеджери витрачають <strong>до 3 годин на день</strong> на документарне оформлення клієнтів та переписку замість активних продажів.
-                    </p>
-                </div>
-            </div>
-
-            <div class="container-wide">
-            <div class="reviews-header scroll-fade" style="text-align: center; margin-bottom: 30px;">
-                <h3 style="color: var(--text-dark);">Метрики процесу AS IS</h3>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card scroll-fade stagger-1">
-                    <div class="stat-value stat-value-anim" data-anim-type="days">до 0 <span>днів</span></div>
-                    <div class="stat-title">Час на 1 договір</div>
-                    <div class="stat-desc">Тривалість від першої заявки на сайті до активації та логіну в бізнес-кабінет.</div>
-                </div>
-                
-                <div class="stat-card scroll-fade stagger-2">
-                    <div class="stat-value stat-value-anim" data-anim-type="emails">0 <span>листів</span></div>
-                    <div class="stat-title">Email-листування</div>
-                    <div class="stat-desc">Кількість уточнюючих листів та скан-копій між менеджером та клієнтом.</div>
-                </div>
-                
-                <div class="stat-card scroll-fade stagger-3">
-                    <div class="stat-value stat-value-anim" data-anim-type="manager">0 <span>менеджер</span></div>
-                    <div class="stat-title">Залежність від особи</div>
-                    <div class="stat-desc">Процес повністю зав'язаний на ручній праці менеджера (Single Point of Failure).</div>
-                </div>
-                
-                <div class="stat-card scroll-fade stagger-4">
-                    <div class="stat-value stat-value-anim" data-anim-type="ghost">???</div>
-                    <div class="stat-title">Втрачені ліди</div>
-                    <div class="stat-desc">Клієнти, які відмовилися від реєстрації через складність паперової рутини.</div>
-                </div>
-                
-                <div class="stat-card scroll-fade stagger-5">
-                    <div class="stat-value stat-value-anim" style="font-size: 2.2rem; line-height: 1.36; color: var(--np-red);" data-anim-type="complaints">ТОП 1</div>
-                    <div class="stat-title">серед скарг в КЦ</div>
-                    <div class="stat-desc">"Менеджер довго не відповідає на лист, не розумію як стати бізнес-клієнтом"</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК 5: КОНКУРЕНТНІ ПЕРЕВАГИ (Заглушка) -->
-    <section class="competitors-section scroll-fade">
-        <div class="container-wide">
-            <h2 class="section-title text-light">📊 ПЕРЕВАГА НАД ЧЕСЬКИМИ КОНКУРЕНТАМИ</h2>
-            <div class="competitor-brands">
-                <div class="brand-logo dpd-logo"><strong>DPD CZ</strong></div>
-                <div class="brand-logo venipak-logo"><strong>PPL</strong></div>
-                <div class="brand-logo swotzy-logo"><strong>Zásilkovna</strong></div>
-                <div class="brand-logo"><strong>GLS</strong></div>
-            </div>
-            <p class="section-desc text-light" style="margin-top: 20px; margin-bottom: 50px; max-width: 1000px; margin-left: auto; margin-right: auto; text-align: center; font-size: 1.65rem; line-height: 1.6; font-weight: 350; color: rgba(255,255,255,0.9);">
-                Головний недолік конкурентів — <span class="highlight-white" style="font-weight: 500;">відсутність реального селф-сервісу</span>. Всі чеські оператори на своїх сайтах лише збирають контактну інформацію. Клієнт змушений чекати, поки з ним зв'яжеться менеджер для подальшого ручного оформлення договору. <span style="color: #EE1D23; font-weight: 600;">Nova Post пропонує повністю цифровий шлях.</span>
-            </p>
-            
-            <div class="competitor-concepts scroll-fade">
-                <div class="scenario-gallery" data-group="competitor">
-                    <!-- GLS -->
-                    <div class="competitor-flow-block">
-                        <div class="competitor-flow-header">
-                            <img src="logo_gls.svg" alt="GLS Logo" class="competitor-brand-logo">
-                            <span class="competitor-flow-title">— Реєстрація MyGLS для фірм та умови співпраці</span>
-                        </div>
-                        <div class="competitor-flow-grid">
-                            <div class="scenario-img">
-                                <img src="Знімок екрана 2026-07-01 о 21.58.39.png" alt="Концепт GLS — Крок 1 (Цінова пропозиція)" class="gallery-thumb">
-                            </div>
-                            <div class="scenario-img">
-                                <img src="Знімок екрана 2026-07-01 о 21.58.09.png" alt="Концепт GLS — Крок 2 (Форма реєстрації)" class="gallery-thumb">
+                    <div class="email-body">
+                        <p style="margin-top: 0; margin-bottom: 14px;">Dear Client,</p>
+                        <p style="margin-bottom: 14px;">Thank you for choosing Nova Post as your logistics partner. We are pleased to inform you that your contract has been successfully signed, and your business account in <strong>My Nova Post</strong> has been activated.</p>
+                        <p style="margin-bottom: 10px; font-weight: 700; color: #111;">Access B2B client benefits:</p>
+                        <ul style="margin-bottom: 16px; padding-left: 20px;">
+                            <li style="margin-bottom: 6px;"><strong>Fast creation:</strong> create international & domestic shipments instantly.</li>
+                            <li style="margin-bottom: 6px;"><strong>Registers & Labels:</strong> group parcels and print shipping labels in bulk.</li>
+                            <li style="margin-bottom: 6px;"><strong>Courier Pickup:</strong> schedule courier pickups directly from your cabinet.</li>
+                        </ul>
+                        <div style="background: rgba(238, 29, 35, 0.05); border-left: 3px solid #EE1D23; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px;">
+                            <div style="font-weight: 700; color: #EE1D23; margin-bottom: 4px;">🔑 Cabinet Link:</div>
+                            <div style="font-size: 0.88rem; color: #444;">
+                                • Link: <a href="https://my.novapost.cz/" target="_blank" style="color: #0066cc;">my.novapost.cz</a><br>
+                                • Login: your registered email or phone
                             </div>
                         </div>
-                    </div>
-
-                    <!-- PPL -->
-                    <div class="competitor-flow-block">
-                        <div class="competitor-flow-header">
-                            <img src="logo_ppl.svg" alt="PPL Logo" class="competitor-brand-logo">
-                            <span class="competitor-flow-title">— Як стати клієнтом та форма збору даних</span>
-                        </div>
-                        <div class="competitor-flow-grid">
-                            <div class="scenario-img">
-                                <img src="Знімок екрана 2026-07-01 о 21.59.22.png" alt="Концепт PPL — Крок 1 (Інструкція)" class="gallery-thumb">
-                            </div>
-                            <div class="scenario-img">
-                                <img src="Знімок екрана 2026-07-01 о 21.59.42.png" alt="Концепт PPL — Крок 2 (Введення IČO)" class="gallery-thumb">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DPD CZ -->
-                    <div class="competitor-flow-block">
-                        <div class="competitor-flow-header" style="justify-content: center; margin-bottom: 20px;">
-                            <img src="logo_dpd.svg" alt="DPD CZ Logo" class="competitor-brand-logo">
-                            <span class="competitor-flow-title">— Форма запиту знижки (1 екран)</span>
-                        </div>
-                        <div class="competitor-flow-grid" style="display: flex; justify-content: center;">
-                            <div class="scenario-img" style="max-width: 50%; width: 100%;">
-                                <img src="Знімок екрана 2026-07-01 о 22.00.02.png" alt="Концепт DPD CZ — Крок 1 (Запит 10% знижки)" class="gallery-thumb">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Zásilkovna -->
-                    <div class="competitor-flow-block">
-                        <div class="competitor-flow-header">
-                            <img src="logo_zasilkovna.svg" alt="Zásilkovna Logo" class="competitor-brand-logo">
-                            <span class="competitor-flow-title">— Реєстрація інтернет-магазину та вибір облікового запису</span>
-                        </div>
-                        <div class="competitor-flow-grid">
-                            <div class="scenario-img">
-                                <img src="Знімок екрана 2026-07-01 о 22.00.59.png" alt="Концепт Zásilkovna — Крок 1 (Вибір типу кабінету)" class="gallery-thumb">
-                            </div>
-                            <div class="scenario-img">
-                                <img src="Знімок екрана 2026-07-01 о 22.00.29.png" alt="Концепт Zásilkovna — Крок 2 (Реєстрація)" class="gallery-thumb">
+                        <div style="background: #f1f3f5; padding: 12px 16px; border-radius: 8px;">
+                            <div style="font-weight: 700; color: #111; margin-bottom: 4px;">👤 Assigned Personal Manager:</div>
+                            <div style="font-size: 0.88rem; color: #444;">
+                                Oleksandr Kovalchuk | +420 770 000 000 | o.kovalchuk@novapost.cz
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </article>
 
-    <!-- НОВИЙ БЛОК: ПРЕЗЕНТАЦІЯ РІШЕННЯ ТА DOCUSIGN -->
-    <section class="solution-intro-section scroll-fade">
-        <div class="container-wide">
-            <h2 class="solution-giant-title">РІШЕННЯ</h2>
-            <p class="solution-subtitle">Цифровий онбординг через DocuSign</p>
-            
-            <div class="docusign-hero-card">
-                <div class="docusign-hero-logo">
-                    <img src="logo_docusign.svg" alt="DocuSign Logo">
-                </div>
-                <div class="docusign-hero-info">
-                    <div class="docusign-benefit-item">
-                        <div class="docusign-benefit-title">Провайдер №1 у світі</div>
-                        <div class="docusign-benefit-desc">DocuSign — світовий стандарт і лідер на глобальному ринку технологій електронного підпису (e-signature) з часткою близько 68% серед аналогічних сервісів у світі. Платформа викликає повну довіру в європейських бізнес-партнерів.</div>
-                    </div>
-                    <div class="docusign-benefit-item">
-                        <div class="docusign-benefit-title">100% покриття країн присутності Nova Post</div>
-                        <div class="docusign-benefit-desc">Повний юридичний супровід та відповідність регламенту eIDAS (ЄС). Договори мають 100% законну силу в Чехії, Польщі, Німеччині, Румунії, Словаччині, Угорщині та в будь-якій іншій країні експансії Nova Post.</div>
-                    </div>
-                    <div class="docusign-benefit-item">
-                        <div class="docusign-benefit-title">Безпека та простота</div>
-                        <div class="docusign-benefit-desc">Миттєве підписання типових документів онлайн з будь-якого пристрою без необхідності встановлювати додаткові програми чи реєструватись в сервісі.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК 6: ДЕМОНСТРАЦІЯ ФЛОУ (4 ФАЗИ) -->
-    <section class="scenarios-section">
-        <!-- Анімації логістики (Scenarios) -->
-        <div class="logistics-anim icon-doc"><svg viewBox="0 0 24 24" width="70" height="70"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></div>
-        <div class="logistics-anim icon-box-2"><svg viewBox="0 0 24 24" width="55" height="55"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5 12 10.85l5.96-3.35L12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zM19 15.91v-6.7l-6 3.37v6.71l6-3.38z"/></svg></div>
-
-        <div class="container-wide">
-            <h2 class="section-title">Цифровий шлях клієнта</h2>
-            <p class="section-desc">Послідовні кроки нового процесу онбордингу</p>
-            
-            <div class="scenarios-list">
-                <!-- Фаза 1 -->
-                <div class="scenario-item scroll-fade stagger-1">
-                    <div class="scenario-header-wrapper">
-                        <div class="scenario-flags-modern">
-                            <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern">
-                            <div class="route-animation">
-                                <div class="route-line"></div>
-                                <svg fill="var(--np-red)" viewBox="0 0 24 24" class="route-vehicle route-truck"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                            </div>
-                            <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern">
-                        </div>
-                        <div class="scenario-text-block">
-                            <h3>Фаза 1 · Сайт та Авторизація</h3>
-                            <p>Клієнт заходить на сайт у розділ «Для бізнесу» → «Як стати бізнес-клієнтом». Ознайомлюється з деталями, переходить на My Nova Post та реєструється по OTP. <strong>Вирішує ТОП-1 скаргу:</strong> відсутнє очікування листа від менеджера.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="scenario-gallery" data-group="phase1">
-                        <img src="screen_instruction_real.png" alt="Фаза 1: Сайт та авторизація клієнта" class="gallery-thumb" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="gallery-placeholder" style="display:none;">
-                            <span>📸 Плейсхолдер: Сайт та авторизація (screen_instruction_real.png)</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Фаза 2 -->
-                <div class="scenario-item scroll-fade stagger-2">
-                    <div class="scenario-header-wrapper">
-                        <div class="scenario-flags-modern">
-                            <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern">
-                            <div class="route-animation">
-                                <div class="route-line"></div>
-                                <svg fill="var(--np-red)" viewBox="0 0 24 24" class="route-vehicle route-plane"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-                            </div>
-                            <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern">
-                        </div>
-                        <div class="scenario-text-block">
-                            <h3>Фаза 2 · Клік на кнопку підпису</h3>
-                            <p>У кабінеті My Nova Post клієнт натискає на кнопку «Стати бізнес-клієнтом» у хедері, щоб ініціювати підписання договору.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="scenario-gallery" data-group="phase2">
-                        <img src="screen_cabinet.png" alt="Фаза 2: Кнопка «SIGN CONTRACT» у кабінеті My Nova Post" class="gallery-thumb" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="gallery-placeholder" style="display:none;">
-                            <span>📸 Плейсхолдер: Кнопка «SIGN CONTRACT» у кабінеті (screen_cabinet.png)</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Фаза 3 -->
-                <div class="scenario-item scroll-fade stagger-3">
-                    <div class="scenario-header-wrapper">
-                        <div class="scenario-flags-modern">
-                            <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern">
-                            <div class="route-animation">
-                                <div class="route-line"></div>
-                                <svg fill="var(--np-red)" viewBox="0 0 24 24" class="route-vehicle route-truck"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                            </div>
-                            <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern">
-                        </div>
-                        <div class="scenario-text-block">
-                            <h3>Фаза 3 · Підпис через DocuSign</h3>
-                            <p>Відкривається DocuSign. Клієнт заповнює мінімум обов'язкових реквізитів та миттєво підписує договір онлайн.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="scenario-gallery grid-2x2" data-group="phase3">
-                        <img src="screen_docusign_start.png" alt="Фаза 3: Крок 1 — Стартовий екран DocuSign PowerForm" class="gallery-thumb">
-                        <img src="screen_docusign_form.png" alt="Фаза 3: Крок 2 — Форма введення даних користувача та компанії" class="gallery-thumb">
-                        <img src="screen_docusign_agreement_1.png" alt="Фаза 3: Крок 3 — Перегляд та заповнення реквізитів договору" class="gallery-thumb">
-                        <img src="screen_docusign_agreement_2.png" alt="Фаза 3: Крок 4 — Накладання підпису та завершення" class="gallery-thumb">
-                    </div>
-                </div>
-
-                <!-- Фаза 4 -->
-                <div class="scenario-item scroll-fade stagger-1">
-                    <div class="scenario-header-wrapper">
-                        <div class="scenario-flags-modern">
-                            <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern">
-                            <div class="route-animation">
-                                <div class="route-line"></div>
-                                <svg fill="var(--np-red)" viewBox="0 0 24 24" class="route-vehicle route-plane"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-                            </div>
-                            <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern">
-                        </div>
-                        <div class="scenario-text-block">
-                            <h3>Фаза 4 · Лист про активацію + Thank You Page</h3>
-                            <p>Після підпису клієнт бачить Thank You Page. Менеджер протягом 2 годин вносить дані в CRM та надсилає лист про успішну активацію.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="scenario-gallery" data-group="phase4">
-                        <div style="display: flex; gap: 30px; width: 100%; justify-content: center; align-items: flex-start; flex-wrap: wrap;">
-                            
-                            <!-- Скриншот подяки -->
-                            <div style="flex: 1; min-width: 320px; max-width: 500px;">
-                                <img src="screen_docusign_thankyou.png" alt="Фаза 4: Thank You Page від DocuSign" class="gallery-thumb" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
-                                <div class="gallery-placeholder" style="display:none;">
-                                    <span>📸 Плейсхолдер: Thank You Page (screen_docusign_thankyou.png)</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Лист активації -->
-                            <div class="email-mockup-card" style="flex: 1.2; min-width: 320px; max-width: 600px; background: #ffffff; border-radius: 16px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.05); text-align: left; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #333;">
-                                <!-- Заголовок листа -->
-                                <div style="background: #f8f9fa; padding: 18px 24px; border-bottom: 1px solid #eee;">
-                                    <div style="font-size: 0.85rem; color: #666; margin-bottom: 6px;">
-                                        <strong>From:</strong> B2B Support Nova Post &lt;b2b@novapost.cz&gt;
-                                    </div>
-                                    <div style="font-size: 0.85rem; color: #666; margin-bottom: 6px;">
-                                        <strong>To:</strong> client-company@gmail.com
-                                    </div>
-                                    <div style="font-size: 0.95rem; color: #111; font-weight: 700; margin-top: 10px;">
-                                        Subject: Welcome to Nova Post! Your business account is successfully activated 🚀
-                                    </div>
-                                </div>
-                                <!-- Тіло листа -->
-                                <div style="padding: 24px; font-size: 0.92rem; line-height: 1.6;">
-                                    <p style="margin-top: 0; margin-bottom: 16px;">Dear Client,</p>
-                                    
-                                    <p style="margin-bottom: 16px;">Thank you for choosing Nova Post as your logistics partner. We are pleased to inform you that your contract has been successfully signed, and your business account in the <strong>My Nova Post</strong> cabinet has been activated.</p>
-                                    
-                                    <p style="margin-bottom: 12px; font-weight: 700; color: #111;">Now you have access to all B2B client benefits:</p>
-                                    <ul style="margin-bottom: 18px; padding-left: 20px; list-style-type: disc;">
-                                        <li style="margin-bottom: 8px;"><strong>Fast creation:</strong> create international and domestic shipments in one click.</li>
-                                        <li style="margin-bottom: 8px;"><strong>Work with registers:</strong> instantly group parcels and print shipping labels.</li>
-                                        <li style="margin-bottom: 8px;"><strong>Courier call:</strong> flexible courier pickup directly from your cabinet based on your needs.</li>
-                                    </ul>
-                                    
-                                    <div style="background: rgba(237, 28, 36, 0.04); border-left: 3px solid var(--np-red); padding: 14px 18px; border-radius: 4px; margin-bottom: 20px;">
-                                        <div style="font-weight: 700; color: var(--np-red); margin-bottom: 6px;">🔑 Cabinet Access:</div>
-                                        <div style="font-size: 0.88rem; color: #444;">
-                                            • Cabinet link: <a href="https://my.novapost.cz/" target="_blank" style="color: var(--blue-accent); text-decoration: underline; font-weight: 600;">my.novapost.cz</a><br>
-                                            • Login: your registered phone number or email
-                                        </div>
-                                    </div>
-                                    
-                                    <div style="background: #f1f3f5; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px;">
-                                        <div style="font-weight: 700; color: #111; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
-                                            👤 Personal Manager:
-                                        </div>
-                                        <div style="font-size: 0.88rem; color: #444; line-height: 1.5;">
-                                            For any logistical, technical, or financial questions, a personal manager has been assigned to you:<br>
-                                            <strong>Name & Surname:</strong> Oleksandr Kovalchuk<br>
-                                            <strong>Phone:</strong> +420 770 000 000<br>
-                                            <strong>Email:</strong> <a href="mailto:o.kovalchuk@novapost.cz" style="color: var(--blue-accent); text-decoration: none;">o.kovalchuk@novapost.cz</a>
-                                        </div>
-                                    </div>
-                                    
-                                    <p style="margin-bottom: 0; color: #777; font-size: 0.85rem;">Sincerely,<br>Nova Post B2B Team</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <!-- МЕТРИКИ TO BE -->
-                <div class="reviews-header scroll-fade" style="margin-top: 90px; text-align: center;">
-                    <h3 style="color: #fff; font-size: 2.2rem; margin-bottom: 10px;">Метрики процесу TO BE</h3>
-                    <p style="color: #aaa; font-size: 1.15rem; max-width: 800px; margin: 0 auto;">Цільові показники після запуску цифрового онбордингу бізнес-клієнтів</p>
-                </div>
-                
-                <div class="stats-grid" style="margin-top: 50px;">
-                    <!-- Картка 1: Час -->
-                    <div class="stat-card scroll-fade stagger-1" style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); box-shadow: none; padding: 25px 10px;">
-                        <div class="stat-value" style="color: #107c41; font-weight: 800; font-size: 3rem; justify-content: center;">до 2 <span>год</span></div>
-                        <div class="stat-title" style="color: #fff; margin-top: 10px;">Час на 1 договір</div>
-                        <div class="stat-desc" style="color: #bbb; font-size: 0.95rem;">Автоматичне заповнення реквізитів та миттєвий підпис online.</div>
-                    </div>
-                    
-                    <!-- Картка 2: Листи -->
-                    <div class="stat-card scroll-fade stagger-2" style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); box-shadow: none; padding: 25px 10px;">
-                        <div class="stat-value" style="color: #107c41; font-weight: 800; font-size: 3rem; justify-content: center;">1 <span>лист</span></div>
-                        <div class="stat-title" style="color: #fff; margin-top: 10px;">Email-листування</div>
-                        <div class="stat-desc" style="color: #bbb; font-size: 0.95rem;">Лише 1 фінальний лист про успішну активацію та логін в кабінет бізнес-клієнта.</div>
-                    </div>
-                    
-                    <!-- Картка 3: Залежність -->
-                    <div class="stat-card scroll-fade stagger-3" style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); box-shadow: none; padding: 25px 10px;">
-                        <div class="stat-value" style="color: #107c41; font-weight: 800; font-size: 3rem; justify-content: center;">0 <span>(self)</span></div>
-                        <div class="stat-title" style="color: #fff; margin-top: 10px;">Залежність від особи</div>
-                        <div class="stat-desc" style="color: #bbb; font-size: 0.95rem;">Повний селф-сервіс. Менеджер лише підтверджує готову картку в CRM.</div>
-                    </div>
-                    
-                    <!-- Картка 4: Відтік -->
-                    <div class="stat-card scroll-fade stagger-4" style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); box-shadow: none; padding: 25px 10px;">
-                        <div class="stat-value" style="color: #107c41; font-weight: 800; font-size: 2.2rem; line-height: 1.36; justify-content: center;">Мінімум</div>
-                        <div class="stat-title" style="color: #fff; margin-top: 10px;">Втрачені ліди</div>
-                        <div class="stat-desc" style="color: #bbb; font-size: 0.95rem;">Швидкий та легкий старт мінімізує відтік клієнтів на етапі реєстрації.</div>
-                    </div>
-
-                    <!-- Картка 5: Скарги -->
-                    <div class="stat-card scroll-fade stagger-5" style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); box-shadow: none; padding: 25px 10px;">
-                        <div class="stat-value" style="color: #107c41; font-weight: 800; font-size: 3rem; justify-content: center;">0 <span>скарг</span></div>
-                        <div class="stat-desc" style="color: #bbb; font-size: 0.95rem; margin-top: 15px;">0 скарг у КЦ. Процес "як стати бізнес клієнтом" автоматизовано і не потребує очікування відповіді менеджера.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК: ЕВОЛЮЦІЯ РІШЕННЯ (MVP vs TARGET) -->
-    <section class="roadmap-section">
-        <!-- Анімації логістики (Roadmap) -->
-        <div class="logistics-anim icon-pin" style="top: 10%; right: 5%; opacity: 0.03;"><svg viewBox="0 0 24 24" width="80" height="80"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-        
-        <div class="container-wide">
-            <h2 class="section-title text-light" style="margin-bottom: 10px;">Еволюція продукту</h2>
-            <p class="section-desc text-light" style="margin-bottom: 50px; opacity: 0.7;">Порівняння пілотного MVP та цільового автоматизованого рішення</p>
-            
-            <div class="roadmap-grid">
-                <!-- Картка 1: MVP -->
-                <div class="roadmap-card mvp-card scroll-fade stagger-1">
-                    <div class="roadmap-badge mvp-badge">Етап 1: MVP (1 місяць)</div>
-                    <div class="roadmap-flag">
-                        <img src="https://flagcdn.com/h60/cz.png" alt="Чехія" class="flag-icon-modern" style="width: 28px; height: auto; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-                        <span style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-left: 10px;">Пілотний запуск в Чехії</span>
-                    </div>
-                    <h3 class="roadmap-card-title">Швидкий запуск та валідація моделі</h3>
-                    <ul class="roadmap-list">
-                        <li><strong>Швидкий Time-to-Market:</strong> Перевірка попиту та працездатності нового цифрового шляху всього за 1 місяць пілоту в Чехії.</li>
-                        <li><strong>DocuSign PowerForm:</strong> Використання стандартного рішення DocuSign для збору підписів за посиланням.</li>
-                        <li><strong>Залучення ресурсів (Тимчасово):</strong> Менеджер вручну переносить дані договору до CRM та створює картку клієнта.</li>
-                        <li><strong>Активація до 2 годин:</strong> Ручне відправлення листа про успішну активацію кабінету після перевірки.</li>
-                    </ul>
-                </div>
-                
-                <!-- Картка 2: Target Solution -->
-                <div class="roadmap-card target-card scroll-fade stagger-2">
-                    <div class="roadmap-badge target-badge">Етап 2: Target Solution</div>
-                    <div class="roadmap-flag">
-                        <span style="font-size: 1.1rem; font-weight: 700; color: #fff;">🚀 Повна автоматизація (Zero-Touch)</span>
-                    </div>
-                    <h3 class="roadmap-card-title">Масштабування без ресурсів сейлів</h3>
-                    <ul class="roadmap-list check-list">
-                        <li><strong>Заповнення реквізитів:</strong> Клієнт заповнює реквізити прямо в інтерфейсі My Nova Post під час реєстрації.</li>
-                        <li><strong>Авто-внесення в CRM:</strong> Вся інформація з договору автоматично та безпомилково переноситься в CRM-систему за секунди.</li>
-                        <li><strong>Автоматичний Welcome-лист:</strong> Система самостійно активує бізнес-функції кабінету та надсилає клієнту email про успішне налаштування.</li>
-                        <li><strong>Без залучення людей:</strong> Повний селф-сервіс для клієнта, який виключає будь-яку ручну роботу з боку відділу продажів.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК 7: FAQ (Accordion) -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="section-title text-dark" style="margin-bottom: 40px; text-align: center;">Часті запитання</h2>
-            
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Чи має DocuSign юридичну силу в Чехії?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Так, електронний підпис DocuSign повністю відповідає регламенту eIDAS (ЄС 910/2014) та законодавству Чеської Республіки. Він є юридично еквівалентним власноручному підпису.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Що потрібно заповнити клієнту?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Лише базові реквізити: назву компанії, IČO та юридичну адресу. Підпис та печатка Nova Post вже вбудовані у шаблон договору, що значно прискорює процес.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Чому активація займає до 2 годин?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            На етапі MVP (перший місяць пілоту в Чехії) внесення нового контрагента в CRM здійснюється менеджером вручну після перевірки. У наступних версіях цей процес буде повністю автоматизований.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Що якщо клієнт не завершить підписання та закриє вкладку?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Дані зберігаються автоматично. Клієнт може повернутися до процесу в будь-який момент через My Nova Post, натиснувши кнопку «Стати бізнес-клієнтом», і продовжити з місця зупинки.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Чи можна підписати договір з мобільного телефону?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Так. І кабінет My Nova Post, і інтерфейс DocuSign повністю адаптовані для мобільних пристроїв. Підписання можна здійснити прямо зі смартфону.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Чи залишиться альтернативний паперовий процес?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Так, на перехідний період паперовий процес та ручне узгодження через менеджера залишаються як альтернатива для нестандартних кейсів.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК 8: INTERNAL FAQ (Для Product Council) -->
-    <section class="internal-faq-section">
-        <div class="container">
-            <div class="badge" style="background: rgba(255,255,255,0.05); color: #fff; border-color: rgba(255,255,255,0.15);">Тільки для Product Council</div>
-            <h2 class="section-title text-light" style="margin-top: 20px; margin-bottom: 45px;">Внутрішній FAQ: Стратегія та Метрики</h2>
-            
-            <div class="accordion accordion-dark">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Чому Чехія і чому саме зараз?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Чехія є одним з ключових європейських ринків для експансії Nova Post. Наш B2B-сегмент тут зростає, але паперовий онбординг, що тривав більше тижня, створював бар'єр для швидкого підключення середнього та малого бізнесу. Цифровізація допоможе прискорити конверсію та покращити досвід клієнта на старті.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Які ключові метрики ми плануємо покращити?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Наша головна мета — скоротити час укладання договору (Time to Contract) з 7 днів до 2 годин. Додатково ми вивільняємо понад 80% робочого часу менеджерів, які раніше витрачали його на ручний збір даних та підготовку договорів, перенаправляючи цей ресурс на прямі продажі та розвиток клієнтів.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Який план масштабування після MVP?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            MVP триватиме 1 місяць на ринку Чехії з ручною обробкою (до 2 годин на внесення в CRM). Після валідації процесів, усунення помилок та збору фідбеку ми перейдемо до повної автоматизації (CRM-API інтеграція) та почнемо послідовне розгортання в інших країнах присутності (Польща, Німеччина, Словаччина).
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Які основні ризики та як ми їх мітигуємо?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Основний ризик MVP — можливі затримки в обробці договорів менеджерами у вихідні або позаробочий час. Для мітигації ми впроваджуємо чіткий SLA (до 2 робочих годин) та налаштовуємо автосповіщення на спільну скриньку підтримки B2B. Юридичні ризики електронного підписання повністю нівельовані, оскільки типовий договір через DocuSign погоджений локальним юридичним департаментом Чехії.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span class="accordion-title">[+] Cost of Delay: Що буде, якщо ми відкладемо цей запуск?</span>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content">
-                            Чеські бізнес-клієнти звикли до швидкого цифрового досвіду. Кожен день затримки змушує нових відправників обирати місцевих конкурентів (DPD, Zasilkovna) через простіший старт. Окрім того, команда продажів продовжить потопати в рутині замість фокусування на залученні нових обсягів відправлень.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК 9: FINAL CTA (Футер) -->
-    <footer class="final-cta">
-        <div class="container">
-            <h2>Готові прискорити онбординг?</h2>
-            <p>Запустіть цифровий процес підписання та розвантажте менеджерів.</p>
-            <div class="cta-wrapper mt-40">
-                <button class="btn-secondary pulse" data-scroll-to=".hero-section">🔘 ПЕРЕЙТИ ДО ПОЧАТКУ</button>
-            </div>
-        </div>
-    </footer>
+    </main>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <span class="lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</span>
-        <img class="lightbox-content" id="lightbox-img" alt="Скріншот">
-        <span class="lightbox-next" onclick="changeLightboxImage(1)">&#10095;</span>
-        <div id="lightbox-caption" class="lightbox-caption"></div>
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Zoomed view">
     </div>
 
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer class="flow-footer">
+        <p>© 2026 Nova Post. B2B Digital Onboarding Presentation for User Interviews.</p>
+    </footer>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
