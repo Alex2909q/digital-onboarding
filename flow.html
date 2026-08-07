@@ -345,10 +345,10 @@
             </div>
             <div class="flow-grid-2x2">
                 <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="screen_docusign_start.png" alt="DocuSign Step 1: PowerForm Start Screen">
+                    <img id="phase3-img1" src="screen_docusign_start.png" data-en-src="screen_docusign_start.png" alt="DocuSign Step 1: PowerForm Start Screen">
                 </div>
                 <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="screen_docusign_form.png" alt="DocuSign Step 2: Company Details Entry Form">
+                    <img id="phase3-img2" src="screen_docusign_form.png" data-en-src="screen_docusign_form.png" alt="DocuSign Step 2: Company Details Entry Form">
                 </div>
                 <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
                     <img src="screen_docusign_agreement_1.png" alt="DocuSign Step 3: Contract Document Review">
@@ -441,6 +441,24 @@
                     phase2Img.src = 'Gemini_Generated_Image_weuspvweuspvweus.png';
                 } else {
                     phase2Img.src = phase2Img.dataset.enSrc;
+                }
+            }
+            
+            const phase3Img1 = document.getElementById('phase3-img1');
+            if (phase3Img1) {
+                if (lang === 'cze') {
+                    phase3Img1.src = 'Gemini_Generated_Image_1x5gp1x5gp1x5gp1.png';
+                } else {
+                    phase3Img1.src = phase3Img1.dataset.enSrc;
+                }
+            }
+
+            const phase3Img2 = document.getElementById('phase3-img2');
+            if (phase3Img2) {
+                if (lang === 'cze') {
+                    phase3Img2.src = 'Gemini_Generated_Image_2t0mzk2t0mzk2t0m.png';
+                } else {
+                    phase3Img2.src = phase3Img2.dataset.enSrc;
                 }
             }
             
