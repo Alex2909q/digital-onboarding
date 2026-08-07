@@ -333,7 +333,7 @@
                 </div>
             </div>
             <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
-                <img src="screen_cabinet.png" alt="Phase 2: My Nova Post cabinet header with SIGN CONTRACT button">
+                <img id="phase2-img" src="screen_cabinet.png" data-en-src="screen_cabinet.png" alt="Phase 2: My Nova Post cabinet header with SIGN CONTRACT button">
             </div>
         </article>
 
@@ -436,6 +436,15 @@
                     phase1Img.src = 'Як стати клієнтом CZE.png';
                 } else {
                     phase1Img.src = phase1Img.dataset.enSrc;
+                }
+            }
+            
+            const phase2Img = document.getElementById('phase2-img');
+            if (phase2Img) {
+                if (lang === 'cze') {
+                    phase2Img.src = 'Gemini_Generated_Image_weuspvweuspvweus.png';
+                } else {
+                    phase2Img.src = phase2Img.dataset.enSrc;
                 }
             }
             
