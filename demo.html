@@ -375,7 +375,7 @@
                 <!-- Thank You Screen -->
                 <div class="phase4-left">
                     <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
-                        <img src="screen_docusign_thankyou.png" alt="DocuSign Thank You Confirmation Screen">
+                        <img id="phase4-img1" src="screen_docusign_thankyou.png" data-en-src="screen_docusign_thankyou.png" alt="DocuSign Thank You Confirmation Screen">
                     </div>
                 </div>
                 <!-- Email Mockup -->
@@ -466,6 +466,15 @@
                 }
             }
             
+            const phase4Img1 = document.getElementById('phase4-img1');
+            if (phase4Img1) {
+                if (lang === 'cze') {
+                    phase4Img1.src = '1.png';
+                } else {
+                    phase4Img1.src = phase4Img1.dataset.enSrc;
+                }
+            }
+
             document.querySelectorAll('.phase-title, .translatable').forEach(title => {
                 const translation = title.getAttribute('data-' + lang);
                 if (translation) {
