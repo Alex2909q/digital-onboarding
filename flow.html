@@ -240,6 +240,37 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
+        .lang-switcher {
+            display: flex;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 4px;
+            margin-right: 20px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #aaaaaa;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn:hover {
+            color: #ffffff;
+        }
+        .lang-btn.active {
+            background: #EE1D23;
+            color: #ffffff;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
         .flow-footer {
             text-align: center;
             padding: 40px 20px;
@@ -257,9 +288,15 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#EE1D23"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
             <span>NOVA POST · B2B FLOW</span>
         </a>
-        <a href="index.html" class="back-link">
-            ← Full Presentation
-        </a>
+        <div class="nav-right">
+            <div class="lang-switcher">
+                <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button id="btn-cze" class="lang-btn" onclick="setLang('cze')">CZE</button>
+            </div>
+            <a href="index.html" class="back-link">
+                ← Full Presentation
+            </a>
+        </div>
     </nav>
 
     <!-- Hero Header -->
@@ -281,7 +318,7 @@
                 </div>
             </div>
             <div class="flow-img-wrapper" style="cursor: zoom-in;" onclick="openLightbox(this.querySelector('img').src)">
-                <img src="screen_instruction_english.png" alt="Phase 1: Website Instruction - How to become a client">
+                <img id="phase1-img" src="screen_instruction_english.png" data-en-src="screen_instruction_english.png" alt="Phase 1: Website Instruction - How to become a client">
             </div>
         </article>
 
@@ -384,6 +421,21 @@
     </footer>
 
     <script>
+        function setLang(lang) {
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-cze').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            const phase1Img = document.getElementById('phase1-img');
+            if (phase1Img) {
+                if (lang === 'cze') {
+                    phase1Img.src = 'Як стати клієнтом CZE.png';
+                } else {
+                    phase1Img.src = phase1Img.dataset.enSrc;
+                }
+            }
+        }
+
         function openLightbox(src) {
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').style.display = 'flex';
