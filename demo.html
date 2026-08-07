@@ -314,7 +314,7 @@
             <div class="flow-step-header">
                 <div class="flow-step-number">1</div>
                 <div class="flow-step-info">
-                    <h2>Phase 1 · Website Instruction & Registration</h2>
+                    <h2 class="phase-title" data-en="Phase 1 · Website Instruction & Registration" data-cze="Fáze 1 · Webové instrukce a registrace">Phase 1 · Website Instruction & Registration</h2>
                     <p>Client visits Nova Post website ("For Business" → "How to become a client"). Learns the process, clicks "BECOME A BUSINESS CLIENT", and registers via OTP. <strong>Solves TOP-1 pain point:</strong> zero waiting for a sales manager response.</p>
                 </div>
             </div>
@@ -328,7 +328,7 @@
             <div class="flow-step-header">
                 <div class="flow-step-number">2</div>
                 <div class="flow-step-info">
-                    <h2>Phase 2 · One-Click Signing Initiation</h2>
+                    <h2 class="phase-title" data-en="Phase 2 · One-Click Signing Initiation" data-cze="Fáze 2 · Zahájení podpisu jedním kliknutím">Phase 2 · One-Click Signing Initiation</h2>
                     <p>Inside the <strong>My Nova Post</strong> cabinet, the user clicks the prominent red button <strong>«SIGN CONTRACT»</strong> in the top bar to instantly initiate agreement signing.</p>
                 </div>
             </div>
@@ -342,7 +342,7 @@
             <div class="flow-step-header">
                 <div class="flow-step-number">3</div>
                 <div class="flow-step-info">
-                    <h2>Phase 3 · Online Contract Signing via DocuSign</h2>
+                    <h2 class="phase-title" data-en="Phase 3 · Online Contract Signing via DocuSign" data-cze="Fáze 3 · Online podpis smlouvy přes DocuSign">Phase 3 · Online Contract Signing via DocuSign</h2>
                     <p>DocuSign PowerForm opens. The client fills minimum company details (Company ID, Name, Address) and electronically signs the legal agreement online in under 2 minutes.</p>
                 </div>
             </div>
@@ -367,7 +367,7 @@
             <div class="flow-step-header">
                 <div class="flow-step-number">4</div>
                 <div class="flow-step-info">
-                    <h2>Phase 4 · Thank You Screen & Automated Activation Email</h2>
+                    <h2 class="phase-title" data-en="Phase 4 · Thank You Screen & Automated Activation Email" data-cze="Fáze 4 · Děkovná obrazovka a automatický aktivační e-mail">Phase 4 · Thank You Screen & Automated Activation Email</h2>
                     <p>Immediately after signing, the client sees the Thank You page. Within 2 hours, data is auto-synced to CRM, and an official activation email is sent with cabinet credentials and personal manager contacts.</p>
                 </div>
             </div>
@@ -438,6 +438,13 @@
                     phase1Img.src = phase1Img.dataset.enSrc;
                 }
             }
+            
+            document.querySelectorAll('.phase-title').forEach(title => {
+                const translation = title.getAttribute('data-' + lang);
+                if (translation) {
+                    title.innerText = translation;
+                }
+            });
         }
 
         function openLightbox(src) {
