@@ -301,9 +301,9 @@
 
     <!-- Hero Header -->
     <header class="flow-hero">
-        <div class="flow-badge">User Interview Presentation</div>
-        <h1>Digital B2B Onboarding Journey</h1>
-        <p>Step-by-step visual demonstration of the automated B2B customer onboarding flow via DocuSign</p>
+        <div class="flow-badge translatable" data-en="User Interview Presentation" data-cze="Prezentace pro uživatelské rozhovory">User Interview Presentation</div>
+        <h1 class="translatable" data-en="Digital B2B Onboarding Journey" data-cze="Digitální B2B onboarding proces">Digital B2B Onboarding Journey</h1>
+        <p class="translatable" data-en="Step-by-step visual demonstration of the automated B2B customer onboarding flow via DocuSign" data-cze="Vizuální ukázka automatizovaného B2B onboarding procesu přes DocuSign krok za krokem">Step-by-step visual demonstration of the automated B2B customer onboarding flow via DocuSign</p>
     </header>
 
     <!-- Flow Container -->
@@ -439,7 +439,7 @@
                 }
             }
             
-            document.querySelectorAll('.phase-title').forEach(title => {
+            document.querySelectorAll('.phase-title, .translatable').forEach(title => {
                 const translation = title.getAttribute('data-' + lang);
                 if (translation) {
                     title.innerText = translation;
