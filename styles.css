@@ -1050,9 +1050,9 @@ h1, h2, h3 { font-weight: 700; line-height: 1.2; }
     padding: 32px 28px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.06);
-    flex: 1 1 calc(33.333% - 24px);
+    flex: 1 1 calc(50% - 24px);
     min-width: 300px;
-    max-width: 370px;
+    max-width: 550px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
